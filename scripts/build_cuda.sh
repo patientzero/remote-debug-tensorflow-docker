@@ -4,4 +4,4 @@
 # copy necassary files to build folder
 cp configure-ssh.sh ../CudaDocker/configure-ssh.sh
 # build docker
-docker build -t remote-cuda-tensorflow ../CudaDocker
+nvidia-docker build -t remote-cuda-tensorflow ../CudaDocker
