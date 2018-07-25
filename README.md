@@ -9,6 +9,7 @@ the docker container any ssh client is sufficient.
 - Server must allow you to expose ports
 - based on docker image tensorflow/tensorflow:latest-gpu-py3 and nvidia-cuda
 - to use remote debugging on the container via ssh you need PyCharm Professional
+- **Additonally for the CUDA version ake sure you have installed the NVIDIA driver and a supported version of Docker for your distribution [(see cuda-docker prerequisites)](https://github.com/NVIDIA/nvidia-docker/wiki/Installation-(version-2.0)#prerequisites).**
 
 ## Images
 
@@ -49,25 +50,36 @@ Run the container with the following command
 ### cuda-docker
 
 ```bash
-    nvida-docker  run –it -d –p 8024:22 remote-tensorflow
+    nvidia-docker run -it -d -p 8024:22 remote-cuda-tensorflow
 ```
 
 To set visible devices for cuda use the -e CUDA_VISIBLE_DEVICES= option, e.g.:
 
 ```bash
-    nvida-docker  run –it -d -e CUDA_VISIBLE_DEVICES=2,3 –p 8024:22 remote-tensorflow
+    nvidia-docker run –it -d -e CUDA_VISIBLE_DEVICES=2,3 –p 8024:22 remote-cuda-tensorflow
 ```
 
+## Connect to Docker on remote machine
+
+To check everything is working, I recommend you to directly connect to the container with ssh.
+
+```bash
+    ssh root@your.host.name -p 8024
+```
+
+## Setup PyCharm
 
 TODO: Blogpost
 
 
-## Links
-https://docs.docker.com/engine/examples/running_ssh_service/
+## Links & sources
+- https://github.com/NVIDIA/nvidia-docker
+- https://docs.docker.com/engine/examples/running_ssh_service/
+- https://github.com/NVIDIA/nvidia-docker/wiki/CUDA
+- https://www.jetbrains.com/pycharm/
+- https://hub.docker.com/r/tensorflow/tensorflow/
 
-https://www.jetbrains.com/pycharm/
 
-https://hub.docker.com/r/tensorflow/tensorflow/
 
 
 
