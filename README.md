@@ -27,8 +27,13 @@ chmod +x build_docker.sh
 ./build_docker.sh
 ```
 ### cuda-docker
+Please adapt the requirments.txt to your needs. This way you can easily add new python packages.
 
-TODO
+```bash
+cd scripts
+chmod +x build_cuda.sh
+./build_cuda.sh
+```
 
 ## Remote docker debugging with PyCharm
 
@@ -45,6 +50,12 @@ Run the container with the following command
 
 ```bash
     nvida-docker  run –it -d –p 8024:22 remote-tensorflow
+```
+
+To set visible devices for cuda use the -e CUDA_VISIBLE_DEVICES= option, e.g.:
+
+```bash
+    nvida-docker  run –it -d -e CUDA_VISIBLE_DEVICES=2,3 –p 8024:22 remote-tensorflow
 ```
 
 
