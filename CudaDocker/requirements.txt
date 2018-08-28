@@ -1,4 +1,6 @@
-tensorflow-gpu 
 numpy
-scipy
+pandas
+scikit-learn
+tensorflow-gpu
+keras 
 python_speech_features
